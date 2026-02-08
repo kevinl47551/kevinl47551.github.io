@@ -6,6 +6,14 @@ p, h1{
     text-align: center;
 }
 
+p {
+    font-size: 25px;
+}
+
+img {
+    height: 200px;
+}
+
 .yellow {
     background-color: yellow;
 }
