@@ -1,0 +1,15 @@
+table, td, th, img {
+    border: 1px solid black;
+}
+
+p, h1{
+    text-align: center;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+#green{
+    background-color: lightgreen;
+}
