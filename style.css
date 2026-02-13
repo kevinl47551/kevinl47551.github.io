@@ -19,7 +19,7 @@ img {
     This yellow class selector and green id selector are conflicting because I put both in the one of the sections.
     the green id selector wins because it id selectors have higher specificity score than class selectors
  */
-.yellow {
+.yellow.yellow {
     background-color: yellow;
 }
 
