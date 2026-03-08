@@ -7,7 +7,7 @@ ________________________________________________________________________________
 HOMEWORK 2
 
 QUESTION 1
-flex direction: row makes it so that the items are placed horizontaly and the main axis is horizontal and when you do something like justify content that is based on the horizontal main axis
+flex direction: row makes it so that the items are placed horizontaly and the main axis is horizontal and when you do something like justify content that is based on the horizontal main axis<br>
 flex direction: column (same thing as row but replace horizontal with verticle)
 
 QUESTION 2
