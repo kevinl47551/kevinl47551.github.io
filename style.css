@@ -10,8 +10,13 @@ header div p {
     font-size: 25px;
 }
 
+.name-links {
+    font-size: 20px;
+}
+
 img {
-    height: 200px;
+    height: 200%;
+    width: 200%;
 }
 
 
@@ -25,4 +30,57 @@ img {
 
 #green{
     background-color: lightgreen;
+}
+
+a:hover {
+    color:darkblue;
+}
+
+
+@media (min-width: 769px) {
+    .left-right {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+    }
+
+    .projects {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-row-gap: 10px;
+        grid-template-columns: 33% 33% auto;
+    }
+
+    .project-item {
+        background-color: yellow;
+        font-size: 20px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .left-right {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: start;
+        justify-content: space-between;
+    }
+
+    .projects {
+        display: grid;
+        grid-column-gap: 20px;
+        grid-row-gap: 10px;
+        grid-template-columns: 100%;
+    }
+
+    .project-item {
+        background-color: yellow;
+        font-size: 40px;
+        text-align: center;
+    }
+}
+
+.project-item img {
+    width: 50%;
+    height: auto;
 }
