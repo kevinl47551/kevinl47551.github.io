@@ -8,7 +8,7 @@ HOMEWORK 2
 
 QUESTION 1
 flex direction: row makes it so that the items are placed horizontaly and the main axis is horizontal and when you do something like justify content that is based on the horizontal main axis<br>
-flex direction: column (same thing as row but replace horizontal with verticle)
+flex direction: column (same thing as row but replace horizontal with vertical)
 
 QUESTION 2
 It is important to use relative fields because if you use fixed pixels and your screen size changes something might take up the whole screen and itll look too big but if you use relative fields itll adapt to the size of the screen or parent element. If you have a smaller screen the elements will also shrink.
