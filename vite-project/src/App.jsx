@@ -5,58 +5,75 @@ import heroImg from './assets/hero.png'
 import './App.css'
 
 
-const Button = ({increase, label}) => {
+const Button = ({change, label}) => {
     return (
-      <button onClick = {increase}>
+      <button className='w-full border-2 border-black bg-amber-500' onClick = {change}>
         {label}
       </button>
     )
 }
 
-const PillDisplay = ({pill1, pill2, pill3, pillHistory}) => {
-  if (pillHistory.length === 0)
+const SinglePillDisplay = ({pill, setPill, pillsTaken, setPillsTaken}) => {
+  const takePill = (pill, setPill) => {
+    if (pill.amt === 0) return;
+
+    setPill({...pill, amt: pill.amt-1});
+    setPillsTaken(pillsTaken + 1);
+  }
+
+  const refillPill = (pill, setPill) => {
+    console.log(typeof(pill.refill));
+    setPill({...pill, amt: pill.amt + pill.refill});
+  }
+
+  return (
+    <div className='border-2 border-amber-300 shadow-2xs'>
+      {pill.amt <= 5 
+        ? <div className='bg-red-600'>{pill.name}: {pill.amt}</div> 
+        : <div className='bg-green-500'>{pill.name}: {pill.amt}</div>
+      }
+
+      <Button 
+        change={() => takePill(pill, setPill)}
+        label="take"
+      />
+
+      <Button
+        change={() => refillPill(pill, setPill)}
+        label="refill"
+      />
+    </div>
+  );
+}
+
+const PillsTakenDisplay = ({pillsTaken}) => {
+  if (pillsTaken === 0)
     return (
-      <div>"No data collected yet"</div>
+      <div>No pills taken yet</div>
     )
   else
     return (
       <div>
-        <div>pill1: {pill1}</div>
-        <div>pill2: {pill2}</div>
-        <div>pill3: {pill3}</div>
-        <div>History: {pillHistory.join(" ")}</div>
+        <div>total: {pillsTaken}</div>
       </div>
     )
 }
 
 function App() {
-  const [pill1, setPill1] = useState(0);
-  const [pill2, setPill2] = useState(0);
-  const [pill3, setPill3] = useState(0);
-  const [pillHistory, setPillHistory] = useState([]);
-
-  const increasePill1 = () => {
-    setPill1(pill1 + 1);
-    setPillHistory(pillHistory.concat(1));
-  }
-
-  const increasePill2 = () => {
-    setPill2(pill2 + 1);
-    setPillHistory(pillHistory.concat(2));
-  }
-
-  const increasePill3 = () => {
-    setPill3(pill3 + 1);
-    setPillHistory(pillHistory.concat(3));
-  }
-
+  const [pill1, setPill1] = useState({name:"med1", amt:30, refill: 30});
+  const [pill2, setPill2] = useState({name:"med2", amt:60, refill: 60});
+  const [pill3, setPill3] = useState({name:"med3", amt:30, refill: 30});
+  const [pillsTaken, setPillsTaken] = useState(0);
 
   return (
-    <div> 
-      <Button increase={increasePill1} label="Pill1"/>
-      <Button increase={increasePill2} label="Pill2"/>
-      <Button increase={increasePill3} label="Pill3"/>
-      <PillDisplay pill1={pill1} pill2={pill2} pill3={pill3} pillHistory={pillHistory}/>
+    <div className='text-black'>
+      <div className='flex justify-center gap-3'>
+        <SinglePillDisplay pill={pill1} setPill={setPill1} pillsTaken={pillsTaken} setPillsTaken={setPillsTaken}/>
+        <SinglePillDisplay pill={pill2} setPill={setPill2} pillsTaken={pillsTaken} setPillsTaken={setPillsTaken}/>
+        <SinglePillDisplay pill={pill3} setPill={setPill3} pillsTaken={pillsTaken} setPillsTaken={setPillsTaken}/>
+      </div> 
+      
+      <PillsTakenDisplay pillsTaken={pillsTaken}/>
     </div>
       
       
